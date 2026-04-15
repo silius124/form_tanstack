@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import ButtonPrimary from "./ButtonPrimary";
 
 interface FormProps {
   title: string;
@@ -16,9 +17,7 @@ function Form({ title, onSubmit, children }: FormProps) {
         {title && <h2 className="text-4xl text-center">{title}</h2>}
         <div className=" gap-5 flex flex-col">{children}</div>
 
-        <button className="text-xl px-6 py-2 w-fit text-white bg-blue-600/30 backdrop-blur-md rounded-md border  border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3)] shadow-lg transition-all duration-200 hover:border-white/40">
-          Submit
-        </button>
+        <ButtonPrimary text="Submit" />
       </form>
     </>
   );
