@@ -1,37 +1,26 @@
+import { FormProvider } from "react-hook-form";
 import Container from "../components/Container";
 import Form from "../components/Form";
 import FormField from "../components/FormField";
 import Input from "../components/Input";
-import { FormProvider, useForm } from "react-hook-form";
+import { useLoginForm } from "../hooks/useLoginForm";
 
 function App() {
-  const methods = useForm({ defaultValues: { name: "", email: "" } });
-  const { errors } = methods.formState;
-  function submit(data: any) {
-    console.log("Отправка формы", data);
-  }
+  const { methods, onSubmit, errors } = useLoginForm();
 
   return (
     <Container>
       <FormProvider {...methods}>
-        <Form title={"LOGIN"} onSubmit={methods.handleSubmit(submit)}>
-          <FormField
-            label="Name"
-            name="name"
-            error={
-              errors.name?.message || (errors.name ? "Поле обязательно" : "")
-            }
-          >
-            <Input type="text" name="name" />
+        <Form title={"LOGIN"} onSubmit={onSubmit}>
+          <FormField label="Email" name="email" error={errors.email?.message}>
+            <Input type="email" name="email" />
           </FormField>
           <FormField
-            label="Email"
-            name="email"
-            error={
-              errors.email?.message || (errors.email ? "Поле обязательно" : "")
-            }
+            label="Password"
+            name="password"
+            error={errors.password?.message}
           >
-            <Input type="email" name="email" />
+            <Input type="password" name="password" />
           </FormField>
         </Form>
       </FormProvider>
