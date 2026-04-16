@@ -1,3 +1,4 @@
+import Container from "../components/Container";
 import Form from "../components/Form";
 import FormField from "../components/FormField";
 import Input from "../components/Input";
@@ -9,7 +10,7 @@ function App() {
   }
 
   return (
-    <div className="p-6 w-auto max-w-[1230px] mx-auto flex flex-col justify-center items-center">
+    <Container>
       <Form title={"LOGIN"} onSubmit={submit}>
         <FormField label="Name" name="name" error="">
           <Input type="text" name="name" />
@@ -18,7 +19,7 @@ function App() {
           <Input type="email" name="email" />
         </FormField>
       </Form>
-    </div>
+    </Container>
   );
 }
 
